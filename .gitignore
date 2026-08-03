@@ -1,0 +1,11 @@
+.env
+__pycache__/
+*.pyc
+.pytest_cache/
+.mypy_cache/
+backend/*.egg-info/
+web/node_modules/
+web/.next/
+web/out/
+.DS_Store
+scratch/

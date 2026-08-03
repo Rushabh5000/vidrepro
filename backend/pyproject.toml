@@ -1,0 +1,52 @@
+[project]
+name = "vidrepro"
+version = "0.1.0"
+description = "Video-to-bug-reproduction analysis platform"
+requires-python = ">=3.11"
+dependencies = [
+    "pydantic>=2.7",
+    "pydantic-settings>=2.2",
+    "sqlalchemy>=2.0",
+    "psycopg[binary]>=3.1",
+    "redis>=5.0",
+    "boto3>=1.34",
+    "PyJWT>=2.8",
+    "bcrypt>=4.1",
+    "requests>=2.32",
+]
+
+[project.optional-dependencies]
+api = [
+    "fastapi>=0.111",
+    "uvicorn[standard]>=0.30",
+    "python-multipart>=0.0.9",
+    "email-validator>=2.1",
+    "sse-starlette>=2.1",
+    "prometheus-client>=0.20",
+    "celery>=5.4",
+]
+worker = [
+    "celery>=5.4",
+    "opencv-python-headless>=4.9",
+    "numpy>=1.26",
+    "pillow>=10.3",
+    "pytesseract>=0.3.10",
+    "prometheus-client>=0.20",
+]
+dev = [
+    "pytest>=8.2",
+    "ruff>=0.4",
+    "fastapi>=0.111",
+    "celery>=5.4",
+    "numpy>=1.26",
+]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["vidrepro*"]
+
+[tool.ruff]
+line-length = 100

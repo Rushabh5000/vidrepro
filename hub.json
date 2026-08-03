@@ -1,0 +1,11 @@
+{
+  "name": "vidrepro",
+  "description": "Video reproduction analysis — AI-powered video processing with OCR and export.",
+  "url": "http://localhost:3009",
+  "ports": [3009, 3010],
+  "primaryPort": 3009,
+  "color": "#8b5cf6",
+  "emoji": "🎥",
+  "requiresDocker": true,
+  "order": 6
+}
