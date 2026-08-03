@@ -7,7 +7,7 @@ services:
       POSTGRES_USER: vidrepro
       POSTGRES_PASSWORD: vidrepro
       POSTGRES_DB: vidrepro
-    ports: ["5433:5432"]  # host 5433 to avoid clashing with a local Postgres
+    ports: ["5434:5432"]  # host 5434 (5433 used by video-resizer)
     volumes: [pgdata:/var/lib/postgresql/data]
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U vidrepro"]
@@ -16,7 +16,7 @@ services:
 
   redis:
     image: redis:7-alpine
-    ports: ["6379:6379"]
+    ports: ["6380:6379"]  # host 6380 (6379 used by video-resizer)
     healthcheck:
       test: ["CMD", "redis-cli", "ping"]
       interval: 5s
@@ -29,7 +29,7 @@ services:
       MINIO_ROOT_USER: minioadmin
       MINIO_ROOT_PASSWORD: minioadmin
       MINIO_API_CORS_ALLOW_ORIGIN: "*"
-    ports: ["9000:9000", "9001:9001"]
+    ports: ["9002:9000", "9003:9001"]  # host 9002/9003 (9000/9001 used by video-resizer)
     volumes: [miniodata:/data]
     healthcheck:
       test: ["CMD", "mc", "ready", "local"]
